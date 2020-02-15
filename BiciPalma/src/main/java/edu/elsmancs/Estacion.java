@@ -57,4 +57,12 @@ public class Estacion {
         }
     }
 
+    public void retirarBicicleta(TarjetaUsuario tarjetaUsuario) {
+        if (tarjetaUsuario.estaActivada()) {
+            int anclajeEscogido = generarAnclaje();
+            Bicicleta bicicletaEscogida = anclajes[anclajeEscogido];
+            mostrarBicicleta(bicicletaEscogida, anclajeEscogido+1);
+            anclajes[anclajeEscogido] = null;
+        }
+    }
 }
