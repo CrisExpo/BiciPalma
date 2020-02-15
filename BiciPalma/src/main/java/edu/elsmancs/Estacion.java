@@ -31,4 +31,30 @@ public class Estacion {
         }
         return anclajesLibres;
     }
+
+    public void consultarAnclajes() {
+        for (int posicion = 0; posicion < numeroAnclajes; posicion++) {
+            if (anclajes[posicion] == null) {
+                System.out.println("Anclaje " + (posicion+1) + " libre");
+            } else {
+                System.out.println("Anclaje " + (posicion+1) + " " + anclajes[posicion].getId());
+            }
+        }
+    }
+    private void mostrarAnclaje(Bicicleta bici, int numeroAnclaje) {
+        System.out.println("bicicleta " + bici.getId() + " anclada en el anclaje: " + numeroAnclaje);
+    }
+
+    public void anclarBicicleta(Bicicleta bici) {
+        int numeroAnclaje = 0;
+        while (numeroAnclaje < numeroAnclajes) {
+            if (anclajes[numeroAnclaje] == null) {
+                anclajes[numeroAnclaje] = bici;
+                mostrarAnclaje(bici, numeroAnclaje+1);
+                break;
+            }
+            numeroAnclaje++;
+        }
+    }
+
 }
