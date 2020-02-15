@@ -5,11 +5,15 @@ public class Estacion {
     final int id;
     final String direccion;
     final int numeroAnclajes;
+    Bicicleta[] anclajes;
+
 
     public Estacion(int id, String direccion, int numeroAnclajes) {
         this.id = id;
         this.direccion = direccion;
         this.numeroAnclajes = numeroAnclajes;
+        this.anclajes = new Bicicleta[numeroAnclajes];
+
     }
 
     public void consultarEstacion() {
