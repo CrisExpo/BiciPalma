@@ -1,5 +1,7 @@
 package edu.elsmancs;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class Estacion {
 
     final int id;
@@ -65,4 +67,27 @@ public class Estacion {
             anclajes[anclajeEscogido] = null;
         }
     }
+
+    public int generarAnclaje() {
+        int anclajesConBici = anclajes.length - anclajesLibres();
+        if (anclajesConBici > 0) {
+            int numeroRandom = ThreadLocalRandom.current().nextInt(anclajesConBici);
+            while (anclajes[numeroRandom] == null) {
+                numeroRandom = ThreadLocalRandom.current().nextInt(anclajesConBici);
+            }
+            return numeroRandom;
+        } else {
+            return -1;
+        }
+    }
+
+    public void mostrarBicicleta(Bicicleta bicicleta, int numeroAnclaje) {
+        System.out.println("bicicleta retirada: " + bicicleta.getId() + " del anclaje: " + numeroAnclaje);
+    }
+
+    public boolean leerTarjetaUsuario(TarjetaUsuario tarjeta) {
+
+        return tarjeta.estaActivada();
+    }
+
 }
